@@ -1,5 +1,0 @@
-If you wish to run our code, 
-please download our pre-trained checkpoints 
-and processed data at the following link:
-
-https://we.tl/t-cc2nOC8dAA
