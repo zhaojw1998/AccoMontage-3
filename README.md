@@ -3,7 +3,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-demo%20page-blue?logo=Github&style=flat-round)](https://zhaojw1998.github.io/AccoMontage-3)
 
 
-Repository for Paper: Zhao et al., [AccoMontage-3: Full-Band Accompaniment Arrangement via Sequential Styoe Transfer with Multi-Track Function Prior](https://arxiv.org/abs/2310.16334).
+Repository for Paper: Zhao et al., [AccoMontage-3: Full-Band Accompaniment Arrangement via Sequential Style Transfer with Multi-Track Function Prior](https://arxiv.org/abs/2310.16334).
 
 Demp page: https://zhaojw1998.github.io/AccoMontage-3
 
