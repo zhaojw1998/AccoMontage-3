@@ -11,15 +11,13 @@ import piano_arranger.format_converter as cvt
 from piano_arranger.models import DisentangleVAE
 from piano_arranger.AccoMontage import find_by_length, dp_search, re_harmonization, get_texture_filter, ref_spotlight
 
-from orchestrator import Slakh_Dataset, collate_fn, compute_pr_feat, EMBED_PROGRAM_MAPPING, Prior
-from orchestrator.dataset import SLAKH_CLASS_PROGRAMS
+from orchestrator import Slakh2100_Pop909_Dataset, collate_fn, compute_pr_feat, EMBED_PROGRAM_MAPPING, Prior
+from orchestrator.QA_dataset import SLAKH_CLASS_PROGRAMS
 from orchestrator.utils import grid2pr, pr2grid, matrix2midi, midi2matrix
 
+from orchestrator.prior_dataset import TOTAL_LEN_BIN, ABS_POS_BIN, REL_POS_BIN
 
 SLAKH_CLASS_MAPPING = {v: k for k, v in EMBED_PROGRAM_MAPPING.items()}
-TOTAL_LEN_BIN = np.array([4, 7, 12, 15, 20, 23, 28, 31, 36, 39, 44, 47, 52, 55, 60, 63, 68, 71, 76, 79, 84, 87, 92, 95, 100, 103, 108, 111, 116, 119, 124, 127, 132])
-ABS_POS_BIN = np.arange(129)
-REL_POS_BIN = np.arange(128)
 
 
 def load_premise(DATA_FILE_ROOT, DEVICE):
@@ -32,7 +30,7 @@ def load_premise(DATA_FILE_ROOT, DEVICE):
     vel = data['velocity']
     cc = data['cc']
     acc_pool = {}
-    for LEN in tqdm(range(2, 11)):
+    for LEN in tqdm(range(2, 13)):
         (mel, acc_, chord_, vel_, cc_, song_reference) = find_by_length(melody, acc, chord, vel, cc, LEN)
         acc_pool[LEN] = (mel, acc_, chord_, vel_, cc_, song_reference)
     texture_filter = get_texture_filter(acc_pool)
@@ -41,25 +39,19 @@ def load_premise(DATA_FILE_ROOT, DEVICE):
     """Load Q&A Prompt Search Space"""
     print('loading orchestration prompt search space ...')
     slakh_dir = os.path.join(DATA_FILE_ROOT, 'Slakh2100_inference_set')
-    dataset = Slakh_Dataset(slakh_dir, debug_mode=False, split='test', mode='train')
-    loader = DataLoader(dataset, batch_size=1, shuffle=True, collate_fn=lambda b:collate_fn(b, DEVICE, get_pr_gt=True))
-    REF_PR = []
-    REF_P = []
-    REF_T = []
+    dataset = Slakh2100_Pop909_Dataset(slakh_dir=slakh_dir, pop909_dir=None, debug_mode=False, split='validation', mode='train')
+
+    loader = DataLoader(dataset, batch_size=1, shuffle=True, collate_fn=lambda b:collate_fn(b, DEVICE))
+    REF = []
     REF_PROG = []
-    FLTN = []
-    for (pr, _, prog, func_pitch, func_time, _, _, _, _, _) in tqdm(loader):
-        pr = pr[0]
+    REF_MIX = []
+    for (_, prog, function, _, _, _) in loader:
         prog = prog[0, :]
-        func_pitch = func_pitch[0, :]
-        func_time = func_time[0, :]
-        fltn = torch.cat([torch.sum(func_pitch, dim=-2), torch.sum(func_time, dim=-2)], dim=-1)
-        REF_PR.append(pr)
-        REF_P.append(func_pitch[0])
-        REF_T.append(func_time[0])
-        REF_PROG.append(prog)
-        FLTN.append(fltn[0])
-    FLTN = torch.stack(FLTN, dim=0)
+
+        REF.extend([batch for batch in function])
+        REF_PROG.extend([prog for _ in range(len(function))])
+        REF_MIX.append(torch.sum(function, dim=1))
+    REF_MIX = torch.cat(REF_MIX, dim=0)
 
     """Initialize orchestration model (Prior + Q&A)"""
     print('Initialize model ...')
@@ -71,7 +63,7 @@ def load_premise(DATA_FILE_ROOT, DEVICE):
     piano_arranger = DisentangleVAE.init_model(torch.device('cuda')).cuda()
     piano_arranger.load_state_dict(torch.load(os.path.join(DATA_FILE_ROOT, 'params_reharmonizer.pt')))
     print('Finished.')
-    return piano_arranger, orchestrator, (acc_pool, edge_weights, texture_filter), (REF_PR, REF_P, REF_T, REF_PROG, FLTN)
+    return piano_arranger, orchestrator, (acc_pool, edge_weights, texture_filter), (REF, REF_PROG, REF_MIX)
 
 
 def read_lead_sheet(DEMO_ROOT, SONG_NAME, SEGMENTATION, NOTE_SHIFT, melody_track_ID=0):
@@ -107,7 +99,6 @@ def read_lead_sheet(DEMO_ROOT, SONG_NAME, SEGMENTATION, NOTE_SHIFT, melody_track
         CHORD_TABLE[-pad_len//4:, -1] = -1
         print(f'Mismatch warning: Detect {midi_len} bars in the lead sheet (MIDI) and {anno_len} bars in the provided phrase annotation. The lead sheet is padded to {anno_len} bars.')
 
-
     melody_queries = []
     for item in query_phrases:
         start_bar = item[-1]
@@ -135,29 +126,23 @@ def piano_arrangement(pianoRoll, chord_table, melody_queries, query_phrases, acc
     return midi_recon, acc
 
 
-def prompt_sampling(acc_piano, REF_PR, REF_P, REF_T, REF_PROG, FLTN, DEVICE='cuda:0'):
-    fltn = torch.from_numpy(np.concatenate(compute_pr_feat(acc_piano[0:1]), axis=-1)).to(DEVICE)
+def prompt_sampling(acc_piano, REF, REF_PROG, REF_MIX, DEVICE='cuda:0'):
+    ref_mix = torch.from_numpy(compute_pr_feat(acc_piano[0:1])[-1]).to(DEVICE)
     sim_func = torch.nn.CosineSimilarity(dim=-1)
-    distance = sim_func(fltn, FLTN)
+    distance = sim_func(ref_mix, REF_MIX)
     distance = distance + torch.normal(mean=torch.zeros(distance.shape), std=0.2*torch.ones(distance.shape)).to(distance.device)
     sim_values, anchor_points = torch.sort(distance, descending=True)
     IDX = 0
     sim_value = sim_values[IDX]
     anchor_point = anchor_points[IDX]
-    func_pitch = REF_P[anchor_point]
-    func_time = REF_T[anchor_point]
+    function = REF[anchor_point]
     prog = REF_PROG[anchor_point]
     prog_class = [SLAKH_CLASS_MAPPING[item.item()] for item in prog.cpu().detach().numpy()]
     program_name = [SLAKH_CLASS_PROGRAMS[item] for item in prog_class]
-    refr = REF_PR[anchor_point]
-    midi_ref = matrix2midi(
-        pr_matrices=refr.detach().cpu().numpy(), 
-        programs=prog_class, 
-        init_tempo=100)
     print(f'Prior model initialized with {len(program_name)} tracks:\n\t{program_name}')
-    return midi_ref, (prog, func_pitch, func_time)
+    return prog, function
 
-def orchestration(acc_piano, chord_track, prog, func_pitch, func_time, orchestrator, DEVICE='cuda:0', blur=.5, p=.1, t=4):
+def orchestration(acc_piano, chord_track, prog, function, orchestrator, DEVICE='cuda:0', blur=.5, p=.1, t=4):
     print('Orchestration begins ...')
     if chord_track is not None:
         if len(acc_piano) > len(chord_track):
@@ -174,11 +159,9 @@ def orchestration(acc_piano, chord_track, prog, func_pitch, func_time, orchestra
     a_pos = torch.from_numpy(a_pos).long().to(DEVICE)
     total_len = torch.from_numpy(total_len).long().to(DEVICE)
 
-    if func_pitch is not None:
-        func_pitch = func_pitch.unsqueeze(0).unsqueeze(0)
-    if func_time is not None:
-        func_time = func_time.unsqueeze(0).unsqueeze(0)
-    recon_pitch, recon_dur = orchestrator.run_autoregressive_nucleus(mix.unsqueeze(0), prog.unsqueeze(0), func_pitch, func_time, total_len.unsqueeze(0), a_pos.unsqueeze(0), r_pos.unsqueeze(0), blur, p, t)  #func_pitch.unsqueeze(0).unsqueeze(0), func_time.unsqueeze(0).unsqueeze(0)
+    if function is not None:
+        function = function.unsqueeze(0).unsqueeze(0)
+    recon_pitch, recon_dur = orchestrator.run_autoregressive_nucleus(mix.unsqueeze(0), prog.unsqueeze(0), function, total_len.unsqueeze(0), a_pos.unsqueeze(0), r_pos.unsqueeze(0), blur, p, t)  #function.unsqueeze(0).unsqueeze(0)
 
     grid_recon = torch.cat([recon_pitch.max(-1)[-1].unsqueeze(-1), recon_dur.max(-1)[-1]], dim=-1)
     bat_ch, track, _, max_simu_note, grid_dim = grid_recon.shape

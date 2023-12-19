@@ -3,6 +3,7 @@ import torch
 import torch.nn.functional as F 
 from torch import nn
 from torch.nn.modules.normalization import LayerNorm
+from torch.nn import Transformer
 
 
 class MultiheadSelfAttentionwithRelativePositionalEmbedding(nn.Module):

@@ -1,5 +1,4 @@
-import numpy as np
-from utils import scheduled_sampling
+from .training import scheduled_sampling
 from torch.optim.lr_scheduler import ExponentialLR
 
 
@@ -90,6 +89,32 @@ class OptimizerScheduler(_Scheduler):
         self._update_step()
 
 
+class OptimizerSchedulerWithWarmUp(_Scheduler):
+
+    def __init__(self, optimizer, warmupscheduler, scheduler, clip, warmup_step=1000, step=0):
+        # optimizer and scheduler are pytorch class
+        super(OptimizerSchedulerWithWarmUp, self).__init__(step)
+        self.optimizer = optimizer
+        self.warmupscheduler = warmupscheduler
+        self.scheduler = scheduler
+        self.warmup_step = warmup_step
+        self.clip = clip
+
+    def optimizer_zero_grad(self):
+        self.optimizer.zero_grad()
+
+    def step(self, require_zero_grad=False):
+        self.optimizer.step()
+        if self.scheduler is not None:
+            if self._step < self.warmup_step:
+                self.warmupscheduler.step()
+            else:
+                self.scheduler.step()
+        if require_zero_grad:
+            self.optimizer_zero_grad()
+        self._update_step()
+
+
 class ParameterScheduler(_Scheduler):
 
     def __init__(self, step=0, mode='train', **schedulers):
@@ -108,7 +133,7 @@ class ParameterScheduler(_Scheduler):
         for scheduler in self.schedulers.values():
             scheduler.eval()
 
-    def step(self, require_zero_grad=False):
+    def step(self):
         params_dic = {}
         for key, scheduler in self.schedulers.items():
             params_dic[key] = scheduler.step()

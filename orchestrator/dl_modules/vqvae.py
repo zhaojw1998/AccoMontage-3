@@ -40,7 +40,7 @@ class VectorQuantizerEMA(nn.Module):
             self.usage.zero_() #  reset usage between certain numbers of iterations
 
     def random_restart(self, batch_z=None):
-        #  randomly restart all dead codes below threshold with random code from the codebook
+        #  randomly restart all dead codes below threshold with random code from the batch
         with torch.no_grad():
             mean_usage = torch.mean(self.usage[self.usage >= self.usage_threshold])
             dead_codes = torch.nonzero(self.usage < self.usage_threshold).squeeze(1)
