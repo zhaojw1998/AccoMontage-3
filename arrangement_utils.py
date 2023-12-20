@@ -109,7 +109,7 @@ def read_lead_sheet(DEMO_ROOT, SONG_NAME, SEGMENTATION, NOTE_SHIFT, melody_track
     return (LEADSHEET, CHORD_TABLE, melody_queries, query_phrases)
 
 
-def piano_arrangement(pianoRoll, chord_table, melody_queries, query_phrases, acc_pool, edge_weights, texture_filter, piano_arranger, PREFILTER):
+def piano_arrangement(pianoRoll, chord_table, melody_queries, query_phrases, acc_pool, edge_weights, texture_filter, piano_arranger, PREFILTER, tempo=100):
     print('Phrasal Unit selection begins:\n\t', f'{len(query_phrases)} phrases in the lead sheet;\n\t', f'set note density filter: {PREFILTER}.')
     phrase_indice, chord_shift = dp_search( melody_queries, 
                                             query_phrases, 
@@ -120,7 +120,7 @@ def piano_arrangement(pianoRoll, chord_table, melody_queries, query_phrases, acc
     path = phrase_indice[0]
     shift = chord_shift[0]
     print('Re-harmonization begins ...')
-    midi_recon, acc = re_harmonization(pianoRoll, chord_table, query_phrases, path, shift, acc_pool, model=piano_arranger, get_est=True, tempo=100)
+    midi_recon, acc = re_harmonization(pianoRoll, chord_table, query_phrases, path, shift, acc_pool, model=piano_arranger, get_est=True, tempo=tempo)
     acc = np.array([grid2pr(matrix) for matrix in acc])
     print('Piano accompaiment generated!')
     return midi_recon, acc
@@ -142,7 +142,7 @@ def prompt_sampling(acc_piano, REF, REF_PROG, REF_MIX, DEVICE='cuda:0'):
     print(f'Prior model initialized with {len(program_name)} tracks:\n\t{program_name}')
     return prog, function
 
-def orchestration(acc_piano, chord_track, prog, function, orchestrator, DEVICE='cuda:0', blur=.5, p=.1, t=4):
+def orchestration(acc_piano, chord_track, prog, function, orchestrator, DEVICE='cuda:0', blur=.5, p=.1, t=4, tempo=100):
     print('Orchestration begins ...')
     if chord_track is not None:
         if len(acc_piano) > len(chord_track):
@@ -169,7 +169,7 @@ def orchestration(acc_piano, chord_track, prog, function, orchestrator, DEVICE='
     grid_recon = grid_recon.reshape(track, -1, max_simu_note, grid_dim)
 
     pr_recon_ = np.array([grid2pr(matrix) for matrix in grid_recon.detach().cpu().numpy()])
-    pr_recon = matrix2midi(pr_recon_, [SLAKH_CLASS_MAPPING[item.item()] for item in prog.cpu().detach().numpy()], 100)
+    pr_recon = matrix2midi(pr_recon_, [SLAKH_CLASS_MAPPING[item.item()] for item in prog.cpu().detach().numpy()], tempo)
     print('Full-band accompaiment generated!')
     return pr_recon
     
