@@ -1,6 +1,6 @@
-# AccoMontage-3
+# Structured Accompaniment Arrangement
 [![arXiv](https://img.shields.io/badge/arXiv-2310.16334-brightgreen.svg?logo=arXiv&style=flat-round)](https://arxiv.org/abs/2310.16334)
-[![GitHub](https://img.shields.io/badge/GitHub-demo%20page-blue?logo=Github&style=flat-round)](https://zhaojw1998.github.io/AccoMontage-3)
+[![GitHub](https://img.shields.io/badge/GitHub-demo%20page-blue?logo=Github&style=flat-round)](https://zhaojw1998.github.io/structured-arrangement/)
 [![Colab](https://img.shields.io/badge/Colab-tutorial-blue?logo=googlecolab&style=flat-round)](https://colab.research.google.com/drive/1LSY1TTkSesDUfpJplq5xi-3-DI09fWQ9?usp=sharing)
 
 Repository for Paper: Zhao et al., Structured Multi-Track Accompaniment Arrangement via Style Prior Modelling, in proceedins of NeurIPS 2024.
@@ -41,16 +41,16 @@ root
 ### How to run
 * You can quckly test our system on [Google Colab](https://colab.research.google.com/drive/1N3XeEfTCWNLTuBp9NWPwzW-hq7Ho7nQA?usp=sharing), where you can quickly test our model online.
 
-* Alternatively, follow the guidance in [`./inference_arrangement.ipynb`](./inference_arrangement.ipynb) offline for more in-depth testing. 
+* Alternatively, follow the guidelines in [`./inference_arrangement.ipynb`](./inference_arrangement.ipynb) offline for more in-depth testing. 
 
-* If you wish to train our model from scratch, run [`./train_prior.py`](./train_prior.py). Please first download our processed LMD dataset and configure the data directory in the script. You may also wish to configure a few params such as `BATCH_SIZE` from the beginning of the script. When `DEBUG_MODE`=1, it will load a small portion of data and quickly run through for debugging purpose.
+* If you wish to train our model from scratch, run [`./train_prior.py`](./train_prior.py). Please first download our processed LMD dataset and configure the corresponding data directory in the script. You may also wish to configure a few params such as `BATCH_SIZE` from the beginning of the script. When `DEBUG_MODE`=1, it will load a small portion of data and quickly run through for debugging purpose.
 
 
 ### Data and Checkpoints
 
-* Model checkpoints can be downloaded [via this link](https://drive.google.com/drive/folders/17yB-Oae_4eGKJmqRS-LB8PwE2rqwZrUu?usp=sharing).
+* Model checkpoints can be downloaded [via this link](https://drive.google.com/file/d/1ZyswS0p_t2Ij5vyaFkM5IbVgphf78oTB/view?usp=sharing).
 
-* Processed dataset (LMD) for training the prior model can be downloaded [via this link](https://drive.google.com/drive/folders/17yB-Oae_4eGKJmqRS-LB8PwE2rqwZrUu?usp=sharing).
+* Processed dataset (LMD) for training the prior model can be downloaded [via this link](https://drive.google.com/file/d/14BHxnYDYSuGe0m3XXqIPL1-d4376GOBH/view?usp=sharing).
 
 * Processed dataset (Slakh2100) for training the autoencoder is accessbible [in this repo](https://github.com/zhaojw1998/Query-and-reArrange/tree/main/data/Slakh2100).
 
