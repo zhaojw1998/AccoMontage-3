@@ -3,7 +3,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-demo%20page-blue?logo=Github&style=flat-round)](https://zhaojw1998.github.io/structured-arrangement/)
 [![Colab](https://img.shields.io/badge/Colab-tutorial-blue?logo=googlecolab&style=flat-round)](https://colab.research.google.com/drive/1LSY1TTkSesDUfpJplq5xi-3-DI09fWQ9?usp=sharing)
 
-Repository for Paper: Zhao et al., Structured Multi-Track Accompaniment Arrangement via Style Prior Modelling, in proceedins of NeurIPS 2024.
+Repository for Paper: [Zhao et al., Structured Multi-Track Accompaniment Arrangement via Style Prior Modelling, in proceedins of NeurIPS 2024](https://arxiv.org/abs/2310.16334).
 
 We present a two-stage ststem for *whole-song*, *multi-track* accompaniment arrangement. In the first stage, a piano accompaniment is generated given a lead sheet. In the second stage, a multi-track accompaniment is orchestrated with customizable track numbers and choices of instruments. Our main novelty (essentials of this repo) lies in the second stage, where we implement long-term *style prior modelling* based on disentangled music content and style factors. Please refer to our paper for the detailed work.
 
