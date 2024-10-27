@@ -39,7 +39,7 @@ root
 
 
 ### How to run
-* You can quckly test our system on [Google Colab](https://colab.research.google.com/drive/1N3XeEfTCWNLTuBp9NWPwzW-hq7Ho7nQA?usp=sharing), where you can quickly test our model online.
+* You can quckly test our system on [Google Colab](https://colab.research.google.com/drive/1LSY1TTkSesDUfpJplq5xi-3-DI09fWQ9?usp=sharing), where you can quickly test our model online.
 
 * Alternatively, follow the guidelines in [`./inference_arrangement.ipynb`](./inference_arrangement.ipynb) offline for more in-depth testing. 
 
