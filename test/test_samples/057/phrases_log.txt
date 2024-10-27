@@ -1,0 +1,11 @@
+song 057, real len: 32
+num pairs 50, greedy matches 38
+MAXIMUM 20 percent: A16A16 cost 20.80 match_score 1.14
+APPROX  20 percent: A16A16 cost 20.80 match_score 1.14
+MIX-MA  20 percent: A16A16 cost 20.80 match_score 1.14
+RANDOM 10 percent: A16A16 cost 20.80 match_score 1.14
+Four approximations time used in total: 0.76
+[0, 16] [16, 32] 
+original matches: 50 after deletion matches: 44 
+FINAL : A16A16 cost 20.80 match_score 1.14
+

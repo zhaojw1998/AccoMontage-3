@@ -1,0 +1,21 @@
+Start Beat 0.0 for 4: F:maj
+Start Beat 1.0 for 4: Bb:maj
+Start Beat 2.0 for 9: C:maj
+Start Beat 4.1 for 3: Bb:maj
+Start Beat 5.0 for 4: C:7
+Start Beat 6.0 for 12: F:maj
+Start Beat 9.0 for 4: Bb:maj
+Start Beat 10.0 for 8: C:maj
+Start Beat 12.0 for 4: Bb:maj
+Start Beat 13.0 for 4: C:maj
+Start Beat 14.0 for 16: F:maj
+Start Beat 18.0 for 8: Bb:maj
+Start Beat 20.0 for 8: C:7
+Start Beat 22.0 for 8: F:maj
+Start Beat 24.0 for 4: Bb:maj
+Start Beat 25.0 for 4: C:7
+Start Beat 26.0 for 8: F:maj
+Start Beat 28.0 for 4: Bb:maj
+Start Beat 29.0 for 4: C:7
+Start Beat 30.0 for 7: F:maj
+Match rate: 0.1

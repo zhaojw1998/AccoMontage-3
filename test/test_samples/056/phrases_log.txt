@@ -1,0 +1,11 @@
+song 056, real len: 32
+num pairs 16, greedy matches 14
+MAXIMUM 20 percent: X4A12A11X5 cost 28.65 match_score 0.92
+APPROX  20 percent: X4A12A11X5 cost 28.65 match_score 0.92
+MIX-MA  20 percent: X4A12A11X5 cost 28.65 match_score 0.92
+RANDOM 10 percent: X4A12A11X5 cost 28.65 match_score 0.92
+Four approximations time used in total: 0.80
+[0, 4] [4, 15] [15, 16] [16, 27] [27, 32] 
+original matches: 16 after deletion matches: 10 
+FINAL : X4A12A11X5 cost 28.65 match_score 0.92
+

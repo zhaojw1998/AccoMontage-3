@@ -1,0 +1,17 @@
+Start Beat 0.0 for 1: N
+Start Beat 0.1 for 8: A:maj
+Start Beat 2.1 for 8: E:7
+Start Beat 4.1 for 4: A:maj
+Start Beat 5.1 for 2: D:maj
+Start Beat 5.3 for 2: A:maj
+Start Beat 6.1 for 2: D:maj
+Start Beat 6.3 for 2: A:maj
+Start Beat 7.1 for 2: E:7
+Start Beat 7.3 for 10: A:maj
+Start Beat 10.1 for 8: E:7
+Start Beat 12.1 for 4: A:maj
+Start Beat 13.1 for 2: D:maj
+Start Beat 13.3 for 2: A:maj
+Start Beat 14.1 for 2: D:maj
+Start Beat 14.3 for 2: A:maj
+Match rate: 0.1

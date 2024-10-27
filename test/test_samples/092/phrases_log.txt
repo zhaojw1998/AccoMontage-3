@@ -1,0 +1,11 @@
+song 092, real len: 25
+num pairs 51, greedy matches 36
+MAXIMUM 20 percent: i3A8A8A8X1 cost 18.60 match_score 2.98
+APPROX  20 percent: i3A8A8A8X1 cost 18.60 match_score 2.98
+MIX-MA  20 percent: i3A8A8A8X1 cost 18.60 match_score 2.98
+RANDOM 10 percent: i3A8A8A8X1 cost 18.60 match_score 2.98
+Four approximations time used in total: 0.32
+[0, 3] [3, 11] [11, 19] [19, 27] [27, 28] 
+original matches: 51 after deletion matches: 25 
+FINAL : i3A8A8A8X1 cost 18.60 match_score 2.98
+

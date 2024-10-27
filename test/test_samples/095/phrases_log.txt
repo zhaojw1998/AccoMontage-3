@@ -1,0 +1,11 @@
+song 095, real len: 27
+num pairs 25, greedy matches 25
+MAXIMUM 20 percent: A12A15 cost 17.55 match_score 1.34
+APPROX  20 percent: A12A15 cost 17.55 match_score 1.34
+MIX-MA  20 percent: A12A15 cost 17.55 match_score 1.34
+RANDOM 10 percent: A12A15 cost 17.55 match_score 1.34
+Four approximations time used in total: 0.45
+[0, 12] [12, 24] [24, 27] 
+original matches: 25 after deletion matches: 23 
+FINAL : A12A15 cost 17.55 match_score 1.34
+

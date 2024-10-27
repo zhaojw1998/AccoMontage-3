@@ -1,0 +1,6 @@
+Start Beat 0.0 for 1: N
+Start Beat 0.1 for 12: A:maj
+Start Beat 3.1 for 2: E:maj6
+Start Beat 3.3 for 14: A:maj
+Start Beat 7.1 for 2: E:maj6
+Match rate: 0.1

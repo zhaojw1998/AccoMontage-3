@@ -1,0 +1,11 @@
+song 070, real len: 31
+num pairs 40, greedy matches 35
+MAXIMUM 20 percent: A8A8X2B5B5X3 cost 27.40 match_score 3.33
+APPROX  20 percent: A8A8B5B7X3 cost 25.10 match_score 4.15
+MIX-MA  20 percent: A8A8B5B7X3 cost 25.10 match_score 4.15
+RANDOM 10 percent: A8A8X4B5B6 cost 25.75 match_score 2.99
+Four approximations time used in total: 0.91
+[0, 8] [8, 31] 
+original matches: 40 after deletion matches: 25 
+FINAL : A8A8B5B7X3 cost 25.10 match_score 4.15
+

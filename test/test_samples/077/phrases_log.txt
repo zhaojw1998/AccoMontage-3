@@ -1,0 +1,11 @@
+song 077, real len: 20
+num pairs 5, greedy matches 5
+MAXIMUM 20 percent: A8A8X4o1 cost 18.90 match_score 1.31
+APPROX  20 percent: A8A8X4o1 cost 18.90 match_score 1.31
+MIX-MA  20 percent: A8A8X4o1 cost 18.90 match_score 1.31
+RANDOM 10 percent: A8A8X4o1 cost 18.90 match_score 1.31
+Four approximations time used in total: 0.11
+[0, 8] [8, 16] [16, 20] [20, 21] 
+original matches: 5 after deletion matches: 5 
+FINAL : A8A8X4o1 cost 18.90 match_score 1.31
+

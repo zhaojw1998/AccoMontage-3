@@ -5,7 +5,7 @@ import torch
 torch.cuda.current_device()
 
 import sys
-sys.path.append('AccoMontage')
+sys.path.append('piano_arranger')
 from models import TextureEncoder, contrastive_model
 import warnings
 warnings.filterwarnings("ignore")

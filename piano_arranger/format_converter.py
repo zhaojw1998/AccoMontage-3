@@ -6,7 +6,6 @@ from main import transcribe_cb1000_midi
 from scipy.interpolate import interp1d
 import mir_eval
 
-
 def expand_chord(chord, shift=0, relative=False):
     """
     expand 14-D chord feature to 36-D
@@ -51,7 +50,7 @@ def ec2vae_mel_format(pr_matrix):
         dur = int(pr_matrix[t, p])
         melody_roll[t, p] = 1
         melody_roll[t+1:t+dur, hold_pitch] = 1
-    melody_roll[np.nonzero(1 - np.sum(melody_roll, axis=1))[0], rest_pitch] = 1
+    melody_roll[np.nonzero(np.sum(melody_roll, axis=1) == 0)[0], rest_pitch] = 1
     return melody_roll
 
 
@@ -84,33 +83,33 @@ def leadsheet2matrix(path, melody_track_ID=0):
     return melody_roll, chord_roll
 
 
-def melody_matrix2data(melody_matrix, tempo=120, start_time=0.0):
+def melody_matrix2data(melody_matrix, tempo=120, start_time=0.0, program=0):
     """reconstruct melody from matrix to MIDI"""
     ROLL_SIZE =130
     HOLD_PITCH = 128
     REST_PITCH = 129
     melodyMatrix = melody_matrix[:, :ROLL_SIZE]
-    melodySequence = [np.argmax(melodyMatrix[i]) for i in range(melodyMatrix.shape[0])]
 
+    onset_or_rest = np.nonzero(melody_matrix[:, HOLD_PITCH] == 0)[0].tolist()
+    onset_or_rest.append(len(melody_matrix))
     melody_notes = []
     minStep = 60 / tempo / 4
-    onset_or_rest = [i for i in range(len(melodySequence)) if not melodySequence[i]==HOLD_PITCH]
-    onset_or_rest.append(len(melodySequence))
     for idx, onset in enumerate(onset_or_rest[:-1]):
-        if melodySequence[onset] == REST_PITCH:
+        if melodyMatrix[onset, REST_PITCH] == 1:
             continue
         else:
-            pitch = melodySequence[onset]
-            start = onset * minStep
-            end = onset_or_rest[idx+1] * minStep
-            noteRecon = pyd.Note(velocity=100, pitch=pitch, start=start_time+start, end=start_time+end)
-            melody_notes.append(noteRecon)
-    melody = pyd.Instrument(program=pyd.instrument_name_to_program('Acoustic Grand Piano'))
+            for pitch in np.nonzero(melodyMatrix[onset])[0]:
+                start = onset * minStep
+                end = onset_or_rest[idx+1] * minStep
+                noteRecon = pyd.Note(velocity=100, pitch=pitch, start=start_time+start, end=start_time+end)
+                melody_notes.append(noteRecon)
+    melody = pyd.Instrument(program=program)
     melody.notes = melody_notes
+
     return melody
 
 
-def chord_matrix2data(chordMatrix, tempo=120, start_time=0.0, get_list=False):
+def chord_matrix2data(chordMatrix, tempo=120, start_time=0.0, get_list=False, program=0):
     """reconstruct chord from matrix to MIDI"""
     chordSequence = []
     for i in range(chordMatrix.shape[0]):
@@ -129,7 +128,7 @@ def chord_matrix2data(chordMatrix, tempo=120, start_time=0.0, get_list=False):
             if value == 1:
                 noteRecon = pyd.Note(velocity=100, pitch=note+4*12, start=start_time+start, end=start_time+end)
                 chord_notes.append(noteRecon)
-    chord = pyd.Instrument(program=pyd.instrument_name_to_program('Acoustic Grand Piano'))
+    chord = pyd.Instrument(program=program)
     chord.notes = chord_notes
     return chord
     
@@ -138,7 +137,7 @@ def matrix2leadsheet(leadsheet, tempo=120, start_time=0.0):
     """reconstruct lead sheet from matrix to MIDI"""
     #leadsheet: (T, 142)
     midi = pyd.PrettyMIDI(initial_tempo=tempo)
-    midi.instruments.append(melody_matrix2data(leadsheet[:, :130], tempo, start_time))
+    midi.instruments.append(melody_matrix2data(leadsheet[:, :130], tempo, start_time, 80))
     midi.instruments.append(chord_matrix2data(leadsheet[:, 130:], tempo, start_time))
     return midi
 

@@ -1,0 +1,2 @@
+X16A4A5X3
+cost 32.55 match_score 1.50

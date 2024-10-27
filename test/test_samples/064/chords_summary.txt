@@ -1,0 +1,12 @@
+Start Beat 0.0 for 1: N
+Start Beat 0.1 for 4: Bb:7
+Start Beat 1.1 for 3: Eb:7
+Start Beat 2.0 for 8: Bb:7
+Start Beat 4.0 for 8: Eb:7
+Start Beat 6.0 for 8: Bb:7
+Start Beat 8.0 for 2: D:min7
+Start Beat 8.2 for 2: G:7
+Start Beat 9.0 for 2: C:min7
+Start Beat 9.2 for 2: F:7
+Start Beat 10.0 for 8: Bb:7
+Match rate: 0.1

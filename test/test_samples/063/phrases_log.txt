@@ -1,0 +1,11 @@
+song 063, real len: 23
+num pairs 13, greedy matches 13
+MAXIMUM 20 percent: A9X6A8 cost 19.85 match_score 1.06
+APPROX  20 percent: A9X6A8 cost 19.85 match_score 1.06
+MIX-MA  20 percent: A9X6A8 cost 19.85 match_score 1.06
+RANDOM 10 percent: X5A10A8 cost 19.20 match_score 1.20
+Four approximations time used in total: 0.29
+[0, 15] [15, 23] 
+original matches: 13 after deletion matches: 7 
+FINAL : A9X6A8 cost 19.85 match_score 1.06
+

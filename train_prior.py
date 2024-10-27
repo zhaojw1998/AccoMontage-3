@@ -31,7 +31,7 @@ def main(rank, world_size, log_path_mng, VERBOSE, MODEL_NAME):
     #print('rank:', rank)
     ddp_setup(rank, world_size)
 
-    PRETRAIN_PATH = "/data1/zhaojw/AccoMontage3/2023-12-07_134449_VQ-Q&A-T/models/VQ-Q&A-T_009_epoch.pt"
+    PRETRAIN_PATH = "/data1/zhaojw/data_file_dir/params_autoencoder.pt"
     BATCH_SIZE = 8
     N_EPOCH = 10
     CLIP = 1
@@ -46,7 +46,7 @@ def main(rank, world_size, log_path_mng, VERBOSE, MODEL_NAME):
     model = Prior.init_model(pretrain_model_path=PRETRAIN_PATH, DEVICE=rank)
     model = DDP(model, device_ids=[rank], find_unused_parameters=False)   
 
-    lmd_dir = "/data1/zhaojw/LMD/VQ-Q&A-T-009-reorder/"
+    lmd_dir = "/data1/zhaojw/LMD/4_bin_quantization_VQ"
     train_set = VQ_LMD_Dataset(lmd_dir, debug_mode=VERBOSE, split='train', mode='train')
     train_loader = DataLoader(train_set, batch_size=BATCH_SIZE, shuffle=False, collate_fn=lambda b: collate_fn(b, rank), sampler=DistributedSampler(train_set))
     val_set = VQ_LMD_Dataset(lmd_dir, debug_mode=VERBOSE, split='validation', mode='train')
@@ -202,24 +202,22 @@ def epoch_report(start_time, end_time, train_loss, valid_loss, n_epoch):
 
 
 
-
-
 if __name__ == '__main__':
-    os.environ['CUDA_VISIBLE_DEVICES']= '0, 1'
+    os.environ['CUDA_VISIBLE_DEVICES']= '0,1'
     os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 
-    MODEL_NAME = 'Prior-Model-VQ-Q&A-T large'
-    DEBUG = 0
+    MODEL_NAME = 'Prior Model'
+    DEBUG = 1
 
     if DEBUG:
-        save_root = 'AccoMontage3/prior_model_VQ-Q&A-T/save'
+        save_root = './save'
         log_path_name = 'debug'
     else:
         save_root = '/data1/zhaojw/AccoMontage3/'
         log_path_name = MODEL_NAME
 
 
-    readme_fn = 'AccoMontage3/prior_model_VQ-Q&A-T/train_DDP.py'
+    readme_fn = 'train_prior.py'
     log_path_mng = LogPathManager(readme_fn, save_root=save_root, log_path_name=log_path_name)
 
     world_size = torch.cuda.device_count()

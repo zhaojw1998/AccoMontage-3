@@ -1,0 +1,21 @@
+Start Beat 0.0 for 4: A:maj
+Start Beat 1.0 for 2: D:maj
+Start Beat 1.2 for 2: E:7
+Start Beat 2.0 for 4: A:maj
+Start Beat 3.0 for 2: E:7
+Start Beat 3.2 for 6: A:maj
+Start Beat 5.0 for 2: D:maj
+Start Beat 5.2 for 2: E:7
+Start Beat 6.0 for 4: A:maj
+Start Beat 7.0 for 2: E:7
+Start Beat 7.2 for 6: A:maj
+Start Beat 9.0 for 2: D:maj
+Start Beat 9.2 for 2: E:7
+Start Beat 10.0 for 4: A:maj
+Start Beat 11.0 for 2: E:7
+Start Beat 11.2 for 6: A:maj
+Start Beat 13.0 for 2: D:maj
+Start Beat 13.2 for 2: E:7
+Start Beat 14.0 for 4: A:maj
+Start Beat 15.0 for 2: E:7
+Match rate: 0.1

@@ -1,0 +1,2 @@
+A8A10
+cost 11.70 match_score 1.23

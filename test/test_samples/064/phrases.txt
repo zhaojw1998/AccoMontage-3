@@ -1,0 +1,2 @@
+A4A4X4
+cost 11.40 match_score 1.80

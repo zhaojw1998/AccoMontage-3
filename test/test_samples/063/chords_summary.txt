@@ -1,0 +1,14 @@
+Start Beat 0.0 for 2: C:maj
+Start Beat 0.2 for 2: A:maj
+Start Beat 1.0 for 2: C:maj
+Start Beat 1.2 for 2: A:maj
+Start Beat 2.0 for 2: C:maj
+Start Beat 2.2 for 1: A:maj
+Start Beat 2.3 for 2: G:maj
+Start Beat 3.1 for 4: F:maj
+Start Beat 4.1 for 3: G:maj
+Start Beat 5.0 for 40: D:maj
+Start Beat 15.0 for 8: A:maj
+Start Beat 17.0 for 8: B:min
+Start Beat 19.0 for 15: D:maj
+Match rate: 0.1

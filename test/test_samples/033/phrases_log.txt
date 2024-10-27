@@ -1,0 +1,11 @@
+song 033, real len: 32
+num pairs 83, greedy matches 53
+MAXIMUM 20 percent: A8A8B8B8 cost 22.80 match_score 4.54
+APPROX  20 percent: A8A8B8B8 cost 22.80 match_score 4.54
+MIX-MA  20 percent: A8A8B8B8 cost 22.80 match_score 4.54
+RANDOM 10 percent: A4B4A4B4C4B4C4B4 cost 21.60 match_score 5.75
+Four approximations time used in total: 1.14
+[0, 8] [8, 16] [16, 24] [24, 32] 
+original matches: 83 after deletion matches: 25 
+FINAL : A4B4A4B4C4B4C4B4 cost 21.60 match_score 7.65
+

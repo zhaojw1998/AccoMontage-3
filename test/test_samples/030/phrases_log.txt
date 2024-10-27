@@ -1,0 +1,11 @@
+song 030, real len: 17
+num pairs 5, greedy matches 5
+MAXIMUM 20 percent: X6A6A5 cost 15.95 match_score 0.98
+APPROX  20 percent: X6A6A5 cost 15.95 match_score 0.98
+MIX-MA  20 percent: X6A6A5 cost 15.95 match_score 0.98
+RANDOM 10 percent: X6A6A5 cost 15.95 match_score 0.98
+Four approximations time used in total: 0.06
+[0, 6] [6, 11] [11, 12] [12, 17] 
+original matches: 5 after deletion matches: 2 
+FINAL : X6A6A5 cost 15.95 match_score 0.98
+

@@ -1,0 +1,11 @@
+song 091, real len: 26
+num pairs 13, greedy matches 13
+MAXIMUM 20 percent: X5A8A10X3o1 cost 26.40 match_score 1.56
+APPROX  20 percent: X5A8A10X3o1 cost 26.40 match_score 1.56
+MIX-MA  20 percent: X5A8A10X3o1 cost 26.40 match_score 1.56
+RANDOM 10 percent: X5A8A10X3o1 cost 26.40 match_score 1.56
+Four approximations time used in total: 0.33
+[0, 5] [5, 13] [13, 21] [21, 26] [26, 27] 
+original matches: 13 after deletion matches: 8 
+FINAL : X5A8A10X3o1 cost 26.40 match_score 1.56
+

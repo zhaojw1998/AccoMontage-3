@@ -1,0 +1,2 @@
+X4A12A11X5
+cost 28.65 match_score 0.92

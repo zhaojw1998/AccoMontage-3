@@ -1,0 +1,12 @@
+Start Beat 0.0 for 28: G:min
+Start Beat 7.0 for 28: D:7
+Start Beat 14.0 for 32: G:min
+Start Beat 22.0 for 8: D:7
+Start Beat 24.0 for 4: C:maj
+Start Beat 25.0 for 4: C#:dim
+Start Beat 26.0 for 4: B:min7
+Start Beat 27.0 for 4: E:7
+Start Beat 28.0 for 4: A:min7
+Start Beat 29.0 for 4: D:7
+Start Beat 30.0 for 7: G:maj
+Match rate: 0.1

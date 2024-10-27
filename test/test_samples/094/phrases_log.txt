@@ -1,0 +1,11 @@
+song 094, real len: 32
+num pairs 11, greedy matches 9
+MAXIMUM 20 percent: A9X15A8 cost 31.55 match_score 1.50
+APPROX  20 percent: A9X15A8 cost 31.55 match_score 1.50
+MIX-MA  20 percent: A9X15A8 cost 31.55 match_score 1.50
+RANDOM 10 percent: A9X15A8 cost 31.55 match_score 1.50
+Four approximations time used in total: 0.93
+[0, 8] [8, 24] [24, 32] 
+original matches: 11 after deletion matches: 8 
+FINAL : A9X15A8 cost 31.55 match_score 1.50
+

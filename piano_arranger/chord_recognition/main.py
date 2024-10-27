@@ -49,7 +49,7 @@ def process_chord(entry, extra_division):
     chord=rec.decode()
     return chord
 
-def transcribe_cb1000_midi(midi_path,output_path=None):
+def transcribe_cb1000_midi(midi_path, extra_division=2, output_path=None):
     '''
     Perform chord recognition on a midi
     :param midi_path: the path to the midi file
@@ -58,19 +58,15 @@ def transcribe_cb1000_midi(midi_path,output_path=None):
     entry=DataEntry()
     entry.append_file(midi_path,io.MidiIO,'midi')
     entry.append_extractor(MidiBeatExtractor,'beat')
-    result=process_chord(entry,extra_division=1)
-    if output_path is not None:
-        entry.append_data(result,ChordLabIO,'pred')
-        entry.save('pred',output_path)
-    else:
-        return result
+    result=process_chord(entry,extra_division=extra_division)
+    #entry.append_data(result,ChordLabIO,'pred')
+    #entry.save('pred',output_path)
+    return result
 
 
 if __name__ == '__main__':
     import sys
-    if(len(sys.argv)!=2):
-        print('Usage: main.py midi_path')
+    if(len(sys.argv)!=3):
+        print('Usage: main.py midi_path output_path')
         exit(0)
-    output_path = "{}/chord_midi.txt".format(
-        "/".join(sys.argv[1].split("/")[:-1]))
-    transcribe_cb1000_midi(sys.argv[1],output_path)
+    transcribe_cb1000_midi(sys.argv[1],sys.argv[2])

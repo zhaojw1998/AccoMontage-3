@@ -1,0 +1,11 @@
+song 010, real len: 32
+num pairs 42, greedy matches 35
+MAXIMUM 20 percent: A8A8B4B4B4B4 cost 19.60 match_score 5.36
+APPROX  20 percent: A8A8B4B4B4B4 cost 19.60 match_score 5.36
+MIX-MA  20 percent: A8A8B4B4B4B4 cost 19.60 match_score 5.36
+RANDOM 10 percent: A8A8B4B4B4B4 cost 19.60 match_score 5.36
+Four approximations time used in total: 1.09
+[0, 8] [8, 16] [16, 20] [20, 24] [24, 28] [28, 32] 
+original matches: 42 after deletion matches: 12 
+FINAL : A8A8B4B4B4B4 cost 19.60 match_score 5.36
+

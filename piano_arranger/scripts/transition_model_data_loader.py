@@ -123,7 +123,7 @@ if __name__ == '__main__':
     import torch
     torch.cuda.current_device()
     import sys
-    sys.path.append('AccoMontage')
+    sys.path.append('piano_arranger')
     from models import contrastive_model, TextureEncoder
 
     data_Set = dataset('checkpoints/song_data.npz', 1, 32)

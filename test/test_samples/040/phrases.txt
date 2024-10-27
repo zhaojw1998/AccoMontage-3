@@ -1,0 +1,2 @@
+X6A10X6A10
+cost 30.60 match_score 0.74

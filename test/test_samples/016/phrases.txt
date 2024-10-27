@@ -1,0 +1,2 @@
+X5A13X3A11
+cost 28.00 match_score 1.16

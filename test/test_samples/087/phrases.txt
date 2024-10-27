@@ -1,0 +1,2 @@
+A4A5B4B5A4A5
+cost 15.70 match_score 4.25

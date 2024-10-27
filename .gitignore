@@ -1,3 +1,4 @@
 *.pyc
 *.zip
 /data_file_dir
+*.wav

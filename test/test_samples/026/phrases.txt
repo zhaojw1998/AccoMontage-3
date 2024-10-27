@@ -1,0 +1,2 @@
+A8A8X16
+cost 32.20 match_score 1.14

@@ -9,7 +9,7 @@ from torch import optim
 from transition_model_data_loader import dataset
 
 import sys
-sys.path.append('AccoMontage')
+sys.path.append('piano_arranger')
 from models import contrastive_model, TextureEncoder
 
 args={

@@ -1,0 +1,11 @@
+song 051, real len: 30
+num pairs 21, greedy matches 19
+MAXIMUM 20 percent: X4A12A9X5 cost 29.00 match_score 0.85
+APPROX  20 percent: X4A12A9X5 cost 29.00 match_score 0.85
+MIX-MA  20 percent: X4A12A9X5 cost 29.00 match_score 0.85
+RANDOM 10 percent: A5B7X4A5X1B8 cost 28.40 match_score 2.13
+Four approximations time used in total: 0.61
+[0, 16] [16, 30] 
+original matches: 21 after deletion matches: 19 
+FINAL : X4A12A9X5 cost 29.00 match_score 0.85
+

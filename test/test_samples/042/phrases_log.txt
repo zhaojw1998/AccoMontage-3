@@ -1,0 +1,11 @@
+song 042, real len: 32
+num pairs 81, greedy matches 52
+MAXIMUM 20 percent: A4B4A4B4C4B4C4B4 cost 21.60 match_score 8.22
+APPROX  20 percent: A8A8B8B8 cost 22.80 match_score 4.60
+MIX-MA  20 percent: A4B4A4B4C4B4C4B4 cost 21.60 match_score 8.22
+RANDOM 10 percent: A4B4A4B4C4B4C4B4 cost 21.60 match_score 5.92
+Four approximations time used in total: 0.86
+[0, 8] [8, 16] [16, 24] [24, 32] 
+original matches: 81 after deletion matches: 27 
+FINAL : A4B4A4B4C4B4C4B4 cost 21.60 match_score 8.22
+

@@ -1,0 +1,11 @@
+song 086, real len: 28
+num pairs 32, greedy matches 27
+MAXIMUM 20 percent: A13X4A11 cost 21.80 match_score 1.39
+APPROX  20 percent: A13X4A11 cost 21.80 match_score 1.39
+MIX-MA  20 percent: A13X4A11 cost 21.80 match_score 1.39
+RANDOM 10 percent: X4A13A11 cost 21.80 match_score 0.81
+Four approximations time used in total: 0.56
+[0, 17] [17, 28] 
+original matches: 32 after deletion matches: 32 
+FINAL : A13X4A11 cost 21.80 match_score 1.39
+

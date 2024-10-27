@@ -1,0 +1,11 @@
+song 100, real len: 32
+num pairs 13, greedy matches 9
+MAXIMUM 20 percent: A4A4X4A4B4B4X4B4 cost 26.80 match_score 4.12
+APPROX  20 percent: A4A4X4A4B4B4X4B4 cost 26.80 match_score 4.12
+MIX-MA  20 percent: A4A4X4A4B4B4X4B4 cost 26.80 match_score 4.12
+RANDOM 10 percent: A4A4X4A4B4B4X4B4 cost 26.80 match_score 4.12
+Four approximations time used in total: 0.85
+[0, 4] [4, 8] [8, 12] [12, 16] [16, 20] [20, 24] [24, 28] [28, 32] 
+original matches: 13 after deletion matches: 6 
+FINAL : A4A4X4A4B4B4X4B4 cost 26.80 match_score 4.12
+

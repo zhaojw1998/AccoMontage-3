@@ -1,0 +1,11 @@
+song 047, real len: 17
+num pairs 6, greedy matches 6
+MAXIMUM 20 percent: A4A4B4B5 cost 13.05 match_score 4.60
+APPROX  20 percent: A4A4B4B5 cost 13.05 match_score 4.60
+MIX-MA  20 percent: A4A4B4B5 cost 13.05 match_score 4.60
+RANDOM 10 percent: A4A4B4B5 cost 13.05 match_score 4.60
+Four approximations time used in total: 0.06
+[0, 4] [4, 8] [8, 12] [12, 16] [16, 17] 
+original matches: 6 after deletion matches: 2 
+FINAL : A4A4B4B5 cost 13.05 match_score 4.60
+

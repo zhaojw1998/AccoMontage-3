@@ -1,0 +1,25 @@
+Start Beat 0.0 for 12: G:maj
+Start Beat 3.0 for 4: D:7
+Start Beat 4.0 for 8: G:maj
+Start Beat 6.0 for 2: E:min
+Start Beat 6.2 for 1: A:9
+Start Beat 6.3 for 1: D:7
+Start Beat 7.0 for 12: G:maj
+Start Beat 10.0 for 2: A:7
+Start Beat 10.2 for 2: D:7
+Start Beat 11.0 for 4: G:maj
+Start Beat 12.0 for 4: D:7
+Start Beat 13.0 for 4: G:maj6
+Start Beat 14.0 for 2: C:maj
+Start Beat 14.2 for 2: D:7
+Start Beat 15.0 for 2: G:maj
+Start Beat 15.2 for 1: A:9
+Start Beat 15.3 for 1: D:7
+Start Beat 16.0 for 16: G:maj
+Start Beat 20.0 for 4: D:7
+Start Beat 21.0 for 8: G:maj
+Start Beat 23.0 for 2: E:min
+Start Beat 23.2 for 1: A:9
+Start Beat 23.3 for 1: D:7
+Start Beat 24.0 for 7: G:maj
+Match rate: 0.1

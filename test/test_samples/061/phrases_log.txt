@@ -1,0 +1,11 @@
+song 061, real len: 24
+num pairs 9, greedy matches 7
+MAXIMUM 20 percent: A6X2B4X1A5B6 cost 21.55 match_score 2.19
+APPROX  20 percent: A6X2B4X1A5B6 cost 21.55 match_score 2.19
+MIX-MA  20 percent: A6X2B4X1A5B6 cost 21.55 match_score 2.19
+RANDOM 10 percent: A6X2B5A5B6 cost 19.90 match_score 1.73
+Four approximations time used in total: 0.19
+[0, 5] [5, 8] [8, 13] [13, 18] [18, 24] 
+original matches: 9 after deletion matches: 4 
+FINAL : A6X2B4X1A5B6 cost 21.55 match_score 2.19
+

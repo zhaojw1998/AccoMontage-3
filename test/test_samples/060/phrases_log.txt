@@ -1,0 +1,11 @@
+song 060, real len: 26
+num pairs 46, greedy matches 29
+MAXIMUM 20 percent: A9A8A9 cost 12.27 match_score 2.49
+APPROX  20 percent: A9A8A9 cost 12.27 match_score 2.49
+MIX-MA  20 percent: A9A8A9 cost 12.27 match_score 2.49
+RANDOM 10 percent: A9A8A9 cost 12.27 match_score 2.49
+Four approximations time used in total: 0.33
+[0, 8] [8, 9] [9, 17] [17, 25] [25, 26] 
+original matches: 46 after deletion matches: 25 
+FINAL : A9A8A9 cost 12.27 match_score 2.49
+

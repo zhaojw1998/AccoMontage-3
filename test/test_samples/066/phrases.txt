@@ -1,0 +1,2 @@
+X10A8A10X4
+cost 31.90 match_score 1.33

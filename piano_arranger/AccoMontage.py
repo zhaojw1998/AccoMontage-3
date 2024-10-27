@@ -161,7 +161,7 @@ def dp_search(query_phrases, seg_query, acc_pool, edge_weights, texture_filter=N
     query_chord_TIV = computeTIV(query_chord)[np.newaxis, :, :]
     chord_score, arg_chord = cosine(query_chord_TIV, chord_set_TIV)
 
-    score = .5*rhythm_result + .5*chord_score
+    score = .3*rhythm_result + .7*chord_score
     score += randomness * np.random.normal(0, 1, size=len(score)) #to introduce some randomness
     if spotlights is not None:
         for spot_idx in spotlights:
@@ -178,7 +178,7 @@ def dp_search(query_phrases, seg_query, acc_pool, edge_weights, texture_filter=N
     record = []
 
     #Searching for phrase 2, 3, ...
-    for i in tqdm(range(1, len(query_length))):
+    for i in range(1, len(query_length)):
         mel, acc, chord, _, _, song_ref = acc_pool[query_length[i]]
         weight_key = f"l_{str(query_length[i-1]).zfill(2)}_{str(query_length[i]).zfill(2)}"
         contras_result = edge_weights[weight_key]
@@ -206,7 +206,7 @@ def dp_search(query_phrases, seg_query, acc_pool, edge_weights, texture_filter=N
         query_chord = query_phrases[i][:, 130:][::4]
         query_chord_TIV = computeTIV(query_chord)[np.newaxis, :, :]
         chord_score, arg_chord = cosine(query_chord_TIV, chord_set_TIV)
-        sim_this_layer = .5*rhythm_result + .5*chord_score
+        sim_this_layer = .3*rhythm_result + .7*chord_score
         sim_this_layer += randomness * np.random.normal(0, 1, size=len(sim_this_layer))
         if spotlights is not None:
             for spot_idx in spotlights:

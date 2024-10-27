@@ -2,6 +2,7 @@ import numpy as np
 import pretty_midi as pyd
 
 
+
 def matrix2midi(matrices, programs, init_tempo=120, time_start=0):
         """
         Reconstruct a multi-track midi from a 3D matrix of shape (Track. Time, 128).
@@ -73,6 +74,8 @@ def midi2matrix(midi, quaver):
     pr_matrices = []
     programs = []
     for track in midi.instruments:
+        if track.is_drum:
+            continue
         programs.append(track.program)
         pr_matrix = np.zeros((len(quaver), 128))
         for note in track.notes:
