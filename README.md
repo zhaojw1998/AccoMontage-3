@@ -42,7 +42,7 @@ root
 * To train our model from scratch, first [`train_autoencoder.py`](./train_autoencoder.py), and then [`train_prior.py`](./train_prior.py). You may wish to configure a few params such as `BATCH_SIZE` from the beginning of the training scripts. When `DEBUG_MODE`=1, it will load a small portion of data and quickly run through for debugging purpose. 
 
 To set up the environment, run the following:
-```
+```python
 # python version <= 3.9 is recommended
 conda create -n env python=3.8
 conda activate env
