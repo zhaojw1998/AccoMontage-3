@@ -2,3 +2,4 @@
 *.zip
 /data_file_dir
 *.wav
+*.mid
