@@ -1,5 +1,5 @@
 # Structured Accompaniment Arrangement
-[![arXiv](https://img.shields.io/badge/arXiv-2310.16334-brightgreen.svg?logo=arXiv&style=flat-round)](https://arxiv.org/abs/2310.16334)
+[![arXiv](https://img.shields.io/badge/arXiv-2310.16334-brightgreen.svg?logo=arXiv&style=flat-round)](https://arxiv.org/abs/2310.16334){:target="_blank"}
 [![GitHub](https://img.shields.io/badge/GitHub-demo%20page-blue?logo=Github&style=flat-round)](https://zhaojw1998.github.io/structured-arrangement/)
 [![Colab](https://img.shields.io/badge/Colab-tutorial-blue?logo=googlecolab&style=flat-round)](https://colab.research.google.com/drive/1LSY1TTkSesDUfpJplq5xi-3-DI09fWQ9?usp=sharing)
 
