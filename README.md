@@ -3,7 +3,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-demo%20page-blue?logo=Github&style=flat-round)](https://zhaojw1998.github.io/structured-arrangement/)
 [![Colab](https://img.shields.io/badge/Colab-tutorial-blue?logo=googlecolab&style=flat-round)](https://colab.research.google.com/drive/1LSY1TTkSesDUfpJplq5xi-3-DI09fWQ9?usp=sharing)
 
-We present a two-stage ststem for *whole-song*, *multi-track* accompaniment arrangement. Initially, a piano accompaniment is generated given a lead sheet; subsequently, a multi-track arrangement is orchestrated with control on choices of instruments. Our main novelty lies in the second stage, where we implement long-term *style prior modelling* based on disentangled music content/style factors. Please refer to our [paper](https://arxiv.org/abs/2310.16334) for the detailed work.
+We present a two-stage ststem for *whole-song*, *multi-track* accompaniment arrangement. Initially, a piano accompaniment is generated given a lead sheet; subsequently, a multi-track arrangement is orchestrated with control on choices of instruments. Our main novelty lies in the second stage, where we implement long-term *style prior modelling* based on disentangled content/style factors of multi-track music. Please refer to our [paper](https://arxiv.org/abs/2310.16334) for the detailed work.
 
 Demp page: https://zhaojw1998.github.io/structured-arrangement/
 
